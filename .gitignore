@@ -1,0 +1,8 @@
+
+overlay_demo.txt
+\.project
+\.cproject
+Debug/
+\.settings/
+\.vscode
+**/__pycache__/
