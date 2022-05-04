@@ -26,8 +26,8 @@ int main()
 	uint32_t fibVal = DemoClass::getFibonacciVal(8);
 	uint32_t indexMax = DemoClass::findIndexMaxElement(7, DemoClass::series);
 
-	if(a == ('f' + 'o' +'o' + 'b' + 'a' + 'r') /*&&
-	(fibVal == 21) && (indexMax == 6)*/)
+	if(a == ('f' + 'o' +'o' + 'b' + 'a' + 'r') &&
+	(fibVal == 21) && (indexMax == 6))
 	{
 		isErr = false;
 	}

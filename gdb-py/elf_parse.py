@@ -104,8 +104,6 @@ def parse_elf(path, arg_lma):
             p_paddr = int.from_bytes(phdr[24:32], 'little')
             p_filesz = int.from_bytes(phdr[32:40], 'little')
             segments.append((p_offset, p_vaddr, p_paddr, p_filesz))
-#            segments.append((hex(p_offset), hex(p_vaddr), hex(p_paddr), hex(p_filesz)))
-#    print(segments)
 
     #section names (.shstrtab)
     with open(path, 'rb') as f:
@@ -139,8 +137,6 @@ def parse_elf(path, arg_lma):
                             section_lma = segments[j][2] + sh_offset - segments[j][0]
 
             sections.append((section_name, sh_addr, sh_offset, sh_size, section_lma))
-#            sections.append((section_name, hex(sh_addr), hex(sh_offset), hex(sh_size), hex(section_lma)))
-#    print(sections)
 
     #find section with specified lma (section_lma == arg_lma)
     found_sect = [sect for sect in sections if sect[4] == arg_lma]

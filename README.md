@@ -8,12 +8,12 @@ As the example used embedded RISC-V.
 
 Project contains simple target overlay-manager ovlymgr.cpp (similar to the example from /gdb/testsuite/gdb.base).  
 GDB supports overlay debugging (GDB-doc: 14. Debugging Programs That Use Overlays).
-In addition, this project contains own instruments (GDB-commands implemented with Python-GDB-API) for working with overlays.  
+In addition, this project contains custom instruments (GDB-commands implemented with Python-GDB-API) for working with overlays.  
 These ideas can be used in full-fledged large project that uses overlays.
 Details in the Wiki.
 
 
-### Own GDB-commands for working with overlays
+### Custom GDB-commands for working with overlays
 
 * 'ovreplace ovlymgr_name' - class ReplaceOverlayManager(gdb.Command):    Replace target overlay-manager mode.
 * 'ovload ovlyno' - class OverlayLoadManually(gdb.Command):   Load specified overlay manually.
@@ -42,7 +42,7 @@ Launch:
 
         /openocd_gdb_launch.sh /overlay_demo/Debug/overlay_demo.elf'
 
-Example of using own GDB-commands 'ovload ovlyno' and 'getmapped':
+Example of using custom GDB-commands 'ovload ovlyno' and 'getmapped':
 
         (gdb) ovload 0
         section_name = .ovly0; lma = 0x10080400; size = 0x44
@@ -52,8 +52,3 @@ Example of using own GDB-commands 'ovload ovlyno' and 'getmapped':
 
 ----
 
-Issue: GDB overlay support:
-...
-
-Issue: Build GDB from source:
-...

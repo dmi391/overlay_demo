@@ -23,18 +23,11 @@ class ReplaceOverlayManager(gdb.Command):
     @classmethod
     def get_ovly_table(cls, ovlyno):
         '''Get overlay section from elf.'''
-#        print('get_ov_sect_from_elf :') #
         novlys = gdb.parse_and_eval('_novlys')
         if (ovlyno < 0) or (ovlyno > novlys-1):
             raise gdb.GdbError('Argument "ovlyno" must be in 0.._novlys-1.')
 
         ovly_table = gdb.parse_and_eval(f'*_ovly_table@{novlys}')
-#        print(f'_novlys = {novlys}') #
-#        print(f'_ovly_table = {ovly_table}') #
-#        print(f'_ovly_table[0] = {hex(ovly_table[0][0])}, {hex(ovly_table[0][1])}, {hex(ovly_table[0][2])}, {hex    (ovly_table[0][3])}') #
-#        print(f'_ovly_table[1] = {hex(ovly_table[1][0])}, {hex(ovly_table[1][1])}, {hex(ovly_table[1][2])}, {hex(ovly_table[1][3])}') #
-
-#        print(f' {hex(ovly_table[ovlyno][Field.VMA])}, {hex(ovly_table[ovlyno][Field.SIZE])}, {hex(ovly_table[ovlyno][Field.LMA])}, {hex(ovly_table[ovlyno][Field.MAPPED])}') #
 
         return (ovly_table[ovlyno][Field.VMA], ovly_table[ovlyno][Field.SIZE], ovly_table[ovlyno][Field.LMA], ovly_table[ovlyno][Field.MAPPED])
 
@@ -62,16 +55,11 @@ class ReplaceOverlayManager(gdb.Command):
 
     @classmethod
     def stop_event_handler(cls, bp_event):
-#        print('\nstop event handler:') #
-#        print(bp_event.breakpoints[0].number) #
-#        print(bp_event.breakpoints[0].location) #
 
         #If stop on breakpoint event is gdb.BreakpointEvent
         #If stop by step event is gdb.StopEvent. Which has not attribute 'breakpoints'
         if isinstance(bp_event, gdb.BreakpointEvent):
             if(bp_event.breakpoints[0].location == ReplaceOverlayManager.ovly_mgr_name):
-#                print('ok')             #Убрать
-#                gdb.execute('frame')    #Убрать
                 for sym in gdb.selected_frame().block(): #get ovlyno argument symbol
                     if sym.is_argument:
                         ovlyno_arg = sym
@@ -160,38 +148,4 @@ class GetNumMappedOverlay(gdb.Command):
             print('No mapped overlays\n')
 
 GetNumMappedOverlay()
-#********************************************************************************
-#********************************************************************************
-
-class EntryOvMgrBreakpoint(gdb.Breakpoint):
-    '''Breakpoint on entry of overlay manager for overstep its body.'''
-
-    def __init__(self, *arg):
-        super().__init__(*arg)
-        self.silent = True
-        self.flag = True        ##
-
-    def stop(self):
-        print('stop at overlay manager:')
-        print(f'return T')
-        return True
-
-'''
-    def stop(self):
-        print('stop at overlay manager')
-        if self.flag == True:
-            print('pre call stop()')
-            self.flag = False
-            self.stop() #exit with True
-            gdb.execute('frame')    #Dont work!
-#            gdb.execute('jump overstep_ovly_load')   #Dont work (not stopped)!
-            #'overstep_ovly_load' - label in OverlayLoad(ovlyno) before call FlushCache();
-            #Load overlay section from elf
-            self.flag = True    #for next call
-            print('return F')
-            return False    #continue execution
-        else:
-            print(f'return T')
-            return True
-'''
 #********************************************************************************
