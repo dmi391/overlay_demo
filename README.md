@@ -34,13 +34,14 @@ Build project:
 
         make
 
-There are two launch configurations for demonstration (setting in file '/overlay_demo/gdb-py/paths'):
-        GDB_SCRIPT="./gdb.py"   =>  Launch with target overlay-manager (part of C++ program)
-        GDB_SCRIPT="./gdb_ovmgr_replace.py"    =>   Launch in replace target overlay-manager mode
+There are two launch configurations for demonstration (setting in file '/overlay_demo/paths'):
 
-Launch:
+        GDB_SCRIPT="../gdb-py/gdb.py"   =>  Launch with target overlay-manager (part of C++ program)
+        GDB_SCRIPT="../gdb-py/gdb_ovmgr_replace.py"    =>   Launch in replace target overlay-manager mode
 
-        /openocd_gdb_launch.sh /overlay_demo/Debug/overlay_demo.elf'
+Launch with hardware:
+
+        /launch-sh/openocd_gdb_launch.sh /Debug/overlay_demo.elf
 
 Example of using custom GDB-commands 'ovload ovlyno' and 'getmapped':
 
