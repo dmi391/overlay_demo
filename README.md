@@ -36,7 +36,7 @@ Build project:
 
 There are two launch configurations for demonstration (setting in file '/overlay_demo/paths'):
 
-        GDB_SCRIPT="../gdb-py/gdb.py"   =>  Launch with target overlay-manager (part of C++ program)
+        GDB_SCRIPT="../gdb-py/gdb_launch.py"   =>  Launch with target overlay-manager (part of C++ program)
         GDB_SCRIPT="../gdb-py/gdb_ovmgr_replace.py"    =>   Launch in replace target overlay-manager mode
 
 Launch with hardware:

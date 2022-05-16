@@ -10,10 +10,10 @@ GDB="/home/user/eclipse_4.4.1/TOOLS/gdb_overlay/riscv64-unknown-elf-gdb-10.1.0-2
 
 #--------------------------------
 #Launch configurations:
-#   "/gdb.py" => Launch with target overlay-manager
+#   "/gdb_launch.py" => Launch with target overlay-manager
 #   "/gdb_ovmgr_replace.py" => Launch in replace target overlay-manager mode
 
-#GDB_SCRIPT="../gdb-py/gdb.py"
+#GDB_SCRIPT="../gdb-py/gdb_launch.py"
 GDB_SCRIPT="../gdb-py/gdb_ovmgr_replace.py"
 
 #--------------------------------
