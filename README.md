@@ -41,11 +41,13 @@ There are two launch configurations for demonstration (setting in file '/overlay
 
 Launch with hardware:
 
-        /launch-sh/openocd_gdb_launch.sh /Debug/overlay_demo.elf
+        cd ./launch-sh/
+        ./openocd_gdb_launch.sh ../Debug/overlay_demo.elf
 
 Launch with Spike:
 
-        /launch-sh/spike_openocd_gdb_launch.sh /Debug/overlay_demo.elf
+        cd ./launch-sh/
+        ./spike_openocd_gdb_launch.sh ../Debug/overlay_demo.elf
 
 Example of using custom GDB-commands 'ovload ovlyno' and 'getmapped':
 
@@ -56,4 +58,3 @@ Example of using custom GDB-commands 'ovload ovlyno' and 'getmapped':
         Overlay #0 is mapped
 
 ----
-
