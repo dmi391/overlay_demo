@@ -76,7 +76,9 @@ PROVIDE(__bss_start = .);
 .bss ALIGN(8) :
 {
   *(.sbss)
+  *(.sbss.*)
   *(.bss)
+  *(.bss.*)
   *(COMMON)
 } >RAM_MEM
 PROVIDE(__bss_end = .);
